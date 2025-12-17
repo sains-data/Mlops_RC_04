@@ -4,7 +4,7 @@ End-to-end MLOps pipeline for pothole detection using YOLOv8n and YOLOv8s with c
 
 # Team
 - Member 1: Feryadi Yulius (122450087)
-- Member 2: Puspa 1224500
+- Member 2: Syadza Puspadari Azhar (122450072)
 - Member 3: Dinda Nababan 1224500
 - Member 4: Alyya 1224500
 
