@@ -1,0 +1,99 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Models
+models/*.pt
+models/*.pth
+*.weights
+
+# Dataset (large files)
+dataset/train/
+dataset/val/
+dataset/test/
+
+# Logs
+logs/
+*.log
+
+# Docker
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+
+# Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+
+# Outputs & Results
+outputs/
+runs/
+
+# All model files
+*.pt
+*.pth
+*.h5
+*.onnx
+*.pkl
+*.joblib
+
+# All image files
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tif
+*.tiff
+
+# Markdown files (except README.md)
+*.md
+!README.md

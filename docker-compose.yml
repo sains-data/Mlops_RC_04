@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  # MLflow Tracking Server
+  mlflow:
+    build:
+      context: .
+      dockerfile: Dockerfile.mlflow
+    container_name: mlflow-server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/app/mlruns
+      - ./mlartifacts:/app/mlartifacts
+    networks:
+      - mlops-network
+    restart: unless-stopped
+
+  # FastAPI Backend
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pothole-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
+      - ./runs:/app/runs
+      - ./configs:/app/configs
+      - ./dataset:/app/dataset
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      - mlflow
+    networks:
+      - mlops-network
+    restart: unless-stopped
+
+  # User Interface
+  user-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.user_ui
+    container_name: pothole-user-ui
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    networks:
+      - mlops-network
+    restart: unless-stopped
+
+  # Admin Interface
+  admin-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.admin_ui
+    container_name: pothole-admin-ui
+    ports:
+      - "8502:8502"
+    volumes:
+      - ./outputs:/app/outputs
+      - ./mlruns:/app/mlruns
+    depends_on:
+      - api
+      - mlflow
+    networks:
+      - mlops-network
+    restart: unless-stopped
+
+networks:
+  mlops-network:
+    driver: bridge
+
+volumes:
+  mlruns:
+  mlartifacts:

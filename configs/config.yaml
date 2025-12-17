@@ -1,0 +1,93 @@
+# Configuration for Pothole Detection MLOps Project
+
+project:
+  name: "pothole-detection-mlops"
+  version: "1.0.0"
+  author: "MLOps Team"
+
+# Dataset Configuration
+data:
+  dataset_path: "dataset"
+  train_path: "dataset/train"
+  val_path: "dataset/val"
+  test_path: "dataset/test"
+  num_classes: 1
+  class_names: ["pothole"]
+  img_size: 640
+
+# Training Configuration
+training:
+  models:
+    - name: "yolov8n"
+      type: "yolov8n.pt"
+      epochs: 100
+      batch_size: 16
+      imgsz: 640
+      lr0: 0.01
+      optimizer: "SGD"
+    - name: "yolov8s"
+      type: "yolov8s.pt"
+      epochs: 100
+      batch_size: 16
+      imgsz: 640
+      lr0: 0.01
+      optimizer: "SGD"
+  
+  # Data Augmentation
+  augmentation:
+    hsv_h: 0.015
+    hsv_s: 0.7
+    hsv_v: 0.4
+    degrees: 0.0
+    translate: 0.1
+    scale: 0.5
+    shear: 0.0
+    flipud: 0.0
+    fliplr: 0.5
+    mosaic: 1.0
+
+# MLflow Configuration
+mlflow:
+  tracking_uri: "http://localhost:5000"
+  experiment_name: "pothole-detection"
+  model_registry_name: "pothole-yolov8"
+
+# Hyperparameter Tuning
+tuning:
+  n_trials: 50
+  timeout: 3600
+  parameters:
+    lr0: [0.001, 0.1]
+    batch_size: [8, 16, 32]
+    epochs: [50, 100, 150]
+    optimizer: ["SGD", "Adam", "AdamW"]
+
+# API Configuration
+api:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  reload: false
+
+# Monitoring Configuration
+monitoring:
+  enable: true
+  log_interval: 100
+  metrics:
+    - "latency"
+    - "error_rate"
+    - "prediction_distribution"
+    - "input_drift"
+
+# Inference Configuration
+inference:
+  confidence_threshold: 0.25
+  iou_threshold: 0.45
+  max_detections: 100
+  device: "cpu"  # or "cuda"
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/app.log"
