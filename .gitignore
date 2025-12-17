@@ -97,3 +97,4 @@ runs/
 # Markdown files (except README.md)
 *.md
 !README.md
+!Step-by-Step_Guide.md
