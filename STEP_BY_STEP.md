@@ -19,7 +19,7 @@
 
 ```powershell
 # Jika dari GitHub
-git clone <your-repo-url>
+git clone https://github.com/sains-data/Mlops_RC_04.git
 cd pothole-detection-mlops
 
 # Atau sudah di folder ini
