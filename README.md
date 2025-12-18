@@ -11,6 +11,10 @@
 - Member 4: Alyya 1224500
 ---
 
+## 📚 Documentation
+
+**→ [START HERE: Step-by-Step Guide](STEP_BY_STEP.md)** 
+
 ## 📋 Latar Belakang
 
 ### Permasalahan
