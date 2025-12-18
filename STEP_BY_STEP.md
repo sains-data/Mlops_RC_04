@@ -22,8 +22,6 @@
 git clone https://github.com/sains-data/Mlops_RC_04.git
 cd pothole-detection-mlops
 
-# Atau sudah di folder ini
-cd "c:\Users\HP 14\Downloads\Semester 7\MLops\New folder (7)"
 ```
 
 ### Step 1.2: Buat Virtual Environment
